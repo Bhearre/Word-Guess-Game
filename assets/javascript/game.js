@@ -1,24 +1,99 @@
-var letterChoices = [];
-var letterSelected = [];
-var words = ["apple", "orange"];
-var wins = 0;
-var numGuesses = 9;
-var currentWord = "";
-var displayCharacters = [];
+//   variables
 
+var words = ["cat", "dog", "mouse", "ball"];  //word bank
+
+var wrongGuesses = [];  //letters already guessed
+var wins = 0;           //number of wins
+var numGuesses = 9;     //number of guesses remaining
+var currentWord = "";   //randomly selected word from word bank
+var displayCharacters = [];     //array used to hold correctly guessed letters or empty spaces
+var letterPressed = "";         //letter pressed by user as guess
+var message = "";               //feedback to user
+
+//for display in webpage
 var currentWordText = document.getElementById("currentWord");
-document.onkeyup = function (event) {
-    // alert("I just pressed" + currentWord)
-    currentWordText.textContent = event.key
-}
+var winsText = document.getElementById("wins");
+var numGuessesText = document.getElementById("numGuesses");
+var wrongGuessesText = document.getElementById("wrongGuesses");
+var message = document.getElementById("message");
 
-var startup = function () {
+//execute when page is launched
+var startUp = function () {
+    // select word at random from word bank
     currentWord = words[Math.floor(Math.random() * words.length)];
+    console.log(currentWord);
 
-    // randomize user options pick a random word from the array
+    //Build an array with the same length as the current word and fill it with underscores 
     for (var i = 0; i < currentWord.length; i++) {
-        displayCharacters.push("_")
-
+        displayCharacters.push("_");
     }
+
+    //Display the current word with underscores separated by spaces
+    currentWordText.textContent = displayCharacters.join(' ');
+
+    // Refresh the rest of the display items
+    winsText.textContent = wins;
+    numGuessesText.textContent = numGuesses;
+    wrongGuessesText.textContent = wrongGuesses;
+    message.textContent = "Press any key to start!";
 }
-startup();
+
+startUp();  //run startUp function at launch
+
+// receives feedback from user selected keys when key is released
+document.onkeyup = function (event) {
+
+    //capture key pressed and store it in variable letterPressed
+    letterPressed = event.key;
+
+    //make sure letterPressed is a-z
+    if (letterPressed.match(/^[a-zA-Z]+$/)) {
+
+        //check if letterPressed is in currentWord
+        if (currentWord.includes(event.key)) {
+
+            //if letterPressed is in currentWord, reflect that in displayCharacters array in the appropriate place
+            for (var j = 0; j < currentWord.length; j++) {
+                if (currentWord[j] === letterPressed) {
+                    displayCharacters[j] = letterPressed;
+                }//closes if
+            }//closes for
+
+            //check to see if displayCharacters has the complete currentWord
+            var checkWord = displayCharacters.join('');
+            if (checkWord === currentWord) {
+                message.textContent = "Congratulations!  You did it!";
+                wins++;
+            }//closes if checkWord = currentWord
+        }//closes if letterPressed is in currentWord
+
+        //if letterPressed is NOT in currentWord
+        else {
+            //add letterPressed to array for Letters Already Guessed
+            wrongGuesses.push(letterPressed);
+            message.textContent = "Sorry, try another letter.";
+
+        }//close else
+    } //closes if letterPressed is a-z
+
+    //reduce the Number of Guesses Remaining by 1
+    numGuesses--;
+
+    //refresh the page
+    refresh();
+
+}//close onkeyup
+
+
+
+
+//refresh the page
+refresh = function () {
+
+    winsText.textContent = wins;
+    numGuessesText.textContent = numGuesses;
+    wrongGuessesText.textContent = wrongGuesses.join(' ');
+    currentWordText.textContent = displayCharacters.join(' ');
+    // message.textContent = message;
+
+}
