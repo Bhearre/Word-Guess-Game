@@ -19,6 +19,11 @@ var message = document.getElementById("message");
 
 //execute when page is launched
 var startUp = function () {
+    currentWord = "";
+    displayCharacters = []; 
+    numGuesses = 9; 
+    wrongGuesses = []; 
+
     // select word at random from word bank
     currentWord = words[Math.floor(Math.random() * words.length)];
     console.log(currentWord);
@@ -64,7 +69,13 @@ document.onkeyup = function (event) {
             if (checkWord === currentWord) {
                 message.textContent = "Congratulations!  You did it!";
                 wins++;
+                startUp();
             }//closes if checkWord = currentWord
+            else {
+                numGuesses--;
+                refresh();
+
+            }
         }//closes if letterPressed is in currentWord
 
         //if letterPressed is NOT in currentWord
@@ -72,15 +83,18 @@ document.onkeyup = function (event) {
             //add letterPressed to array for Letters Already Guessed
             wrongGuesses.push(letterPressed);
             message.textContent = "Sorry, try another letter.";
+            numGuesses--;
+            refresh();
 
         }//close else
     } //closes if letterPressed is a-z
 
     //reduce the Number of Guesses Remaining by 1
-    numGuesses--;
+   if (numGuesses === 0) {
+        startUp();
+   }
 
     //refresh the page
-    refresh();
 
 }//close onkeyup
 
