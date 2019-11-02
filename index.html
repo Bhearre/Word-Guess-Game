@@ -1,26 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        <title>Hangman</title>
-    </head>
-    
-    <body>
-        
-        <h1>Hangman</h1>
-        <p id="message"></p>
-        <p>Wins</p>
-        <p id="wins"></p>
-        <p>Current Word</p>
-        <p id="currentWord"></p>
-        <p>Number of Guesses Remaining</p>
-        <p id="numGuesses"></p>
-        <p>Letters Already Guessed</p>
-        <p id="wrongGuesses"></p>
-        
-        </body>
-        <script src="assets/javascript/game.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+
+    <title>Guess the Word</title>
+</head>
+
+<body>
+    <div class="bg">
+        <div id="header">
+            <h2>Let's Play Ball!</h2>
+            <h1>Guess the Word!</h1>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-1 text-right" id="label">
+                Wins:
+            </div>
+            <div class="col-sm-1 text-center" class="scoreboard">
+                <p id="wins"></p>
+            </div>
+
+            <div class="col-sm-1 text-right" id="label">
+                Losses:
+            </div>
+            <div class="col-sm-1 text-center" class="scoreboard">
+                <p id="losses"></p>
+            </div>
+            <div class="col-sm-4">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="col-sm-12">
+                        <p id="message"></p>
+                </div>
+            </div>
+
+            <div class="row">
+                    <div class="col-sm-12">
+                        <hr>
+                    </div>
+                </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4 text-center" id="label">
+                <p>Current Word:</p>
+                <p id="currentWord"></p>
+            </div>
+            <div class="col-sm-4">
+            </div>
+        </div>
+        <!-- closes row -->
+
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4 text-center" id="label">
+                <p>Number of Guesses Remaining:</p>
+                <p id="numGuesses"></p>
+            </div>
+            <div class="col-sm-4">
+            </div>
+        </div>
+        <!-- closes row -->
+
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4 text-center" id="label">
+                <p>Letters Already Guessed:</p>
+                <p id="wrongGuesses"></p>
+            </div>
+            <div class="col-sm-4">
+            </div>
+        </div>
+        <!-- closes row -->
+
+    </div>
+    <!-- </div>  -->
+
+
+
+</body>
+<script src="assets/javascript/game.js"></script>
+
 </html>

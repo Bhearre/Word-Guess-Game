@@ -1,0 +1,57 @@
+
+
+#header {
+    padding-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+.bg {
+    /* The image used */
+    background-image: url("../images/athletes-audience-ball-264279.jpg");
+  
+    /* Full height */
+    height: 100%; 
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  
+
+  #currentWord {
+    text-align: center;
+    font-size: 3em;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif; 
+    justify-content: center;
+    color: white;
+}
+
+.scoreboard {
+    border-style: dashed;
+    border-width: 2px;
+    border-color: #2C3E50;
+  }
+
+#label {
+    font-size: large;
+}
+
+#message {
+
+    font-size: large;
+    justify-content: center;
+
+}
+.container {
+    background: white;
+    width: 640px;
+    border: 1px solid lightgrey;
+    margin: 20px auto;
+    margin-bottom: 100px;
+    padding: 20px;
+}
